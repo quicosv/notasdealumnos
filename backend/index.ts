@@ -3,11 +3,11 @@ import express, { Express } from 'express';
 import { Server, Socket } from 'socket.io';
 import http from 'http';
 import dotenv from 'dotenv';
-import { BandaLista } from './classes/BandaLista';
+import { BandaLista as ListaAlumnos } from './classes/BandaLista';
 
 dotenv.config();
 
-const listaBandas = new BandaLista();
+const listaDeAlumnos = new ListaAlumnos();
 
 // Instanciamos express
 const app: Express = express();
@@ -24,30 +24,12 @@ io.on('connection', (socket: Socket) => {
   console.log(socket.id);
   console.log('Cliente conectado');
   // Emitir al cliente conectado todas las bandas actuales
-  socket.emit('current-bands', listaBandas.getBandas());
-
-  // votar por la banda
-  socket.on('votar-banda', (id: number) => {
-    listaBandas.increaseVotes(id);
-    io.emit('current-bands', listaBandas.getBandas());
-  });
-
-  // Borrar banda
-  socket.on('borrar-banda', (id: number) => {
-    listaBandas.removeBanda(id);
-    io.emit('current-bands', listaBandas.getBandas());
-  });
-
-  // Cambiar nombre de la banda
-  socket.on('cambiar-nombre-banda', ({ id, nuevoNombre }) => {
-    listaBandas.changeName(id, nuevoNombre);
-    io.emit('current-bands', listaBandas.getBandas());
-  });
+  socket.emit('todos-los-alumnos', listaDeAlumnos.getAlumnos());
 
   // Crear una nueva banda
-  socket.on('crear-banda', ({ nombre }) => {
-    listaBandas.addBanda(nombre);
-    io.emit('current-bands', listaBandas.getBandas());
+  socket.on('crear-alumno', ({ nombre, notaMates, notaLengua, notaHistoria }) => {
+    listaDeAlumnos.addAlumno(nombre, notaMates, notaLengua, notaHistoria);
+    io.emit('todos-los-alumnos', listaDeAlumnos.getAlumnos());
   });
 });
 
