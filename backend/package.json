@@ -1,14 +1,14 @@
 {
-  "name": "noderestserver",
+  "name": "notasdealumnos",
   "version": "1.0.0",
-  "description": "",
+  "description": "Servidor en tiempo real sobre notas de alumnos",
   "main": "index.js",
   "scripts": {
     "start": "set NODE_OPTIONS=--enable-source-maps&& start /b tsc -w & nodemon dist/index.js",
     "lint": "eslint . --ext .ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Javi y Quico",
   "license": "ISC",
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
