@@ -7,7 +7,7 @@ interface IAlumnosFormProps {
 }
 
 export const AlumnosForm = ({ crearAlumno}: IAlumnosFormProps) => {
-	const {form, onInputChange } = useForm<IAlumno>({
+	const {form, onInputChange, onResetForm } = useForm<IAlumno>({
 		nombre: '',
 		notaMates: 0,
 		notaLengua: 0,
@@ -17,6 +17,7 @@ const {nombre, notaMates, notaLengua, notaHistoria } = form;
 const onSubmit = (e: FormEvent) => {
 	e.preventDefault();
 	crearAlumno(nombre,notaMates,notaLengua,notaHistoria);
+	onResetForm();
 }
 	return (
 		<form onSubmit={onSubmit}>

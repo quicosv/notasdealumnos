@@ -7,7 +7,7 @@ interface IAlumnosListaProps {
 
 export const AlumnosLista = ({alumnosDb}: IAlumnosListaProps) => {
 	const [alumnos, setAlumnos] = useState<IAlumno[]>(alumnosDb);
-	const [suma, setSuma] = useState<number>(0);
+	// const [suma, setSuma] = useState<number>(0);
 	useEffect(() => {
 		setAlumnos(alumnosDb);
 	}, [alumnosDb]);
