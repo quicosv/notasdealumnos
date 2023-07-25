@@ -12,8 +12,8 @@ export const AlumnosLista = ({alumnosDb}: IAlumnosListaProps) => {
 		setAlumnos(alumnosD);
 	}, [alumnosDb]);
 	return (
-		{alumnos.length === 0 ? <p>No hay alumnos.</p> :
-		<table className="table table-stripped">
+		{alumnos.length === 0 ? (<p>No hay alumnos.</p>() :
+		(<table className="table table-stripped">
 			<caption>Notas de los alumnos</caption>
 			<thead>
 				<tr>
@@ -37,6 +37,6 @@ export const AlumnosLista = ({alumnosDb}: IAlumnosListaProps) => {
 ))}
 
 			</tbody>
-		</table>}
+		</table>)}
 	)
 }
