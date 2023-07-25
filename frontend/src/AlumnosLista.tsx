@@ -9,10 +9,11 @@ export const AlumnosLista = ({alumnosDb}: IAlumnosListaProps) => {
 	const [alumnos, setAlumnos] = useState<IAlumno[]>(alumnosDb);
 	const [suma, setSuma] = useState<number>(0);
 	useEffect(() => {
-		setAlumnos(alumnosD);
+		setAlumnos(alumnosDb);
 	}, [alumnosDb]);
 	return (
-		{alumnos.length === 0 ? (<p>No hay alumnos.</p>() :
+		<>
+		{alumnos.length === 0 ? (<p>No hay alumnos.</p>) :
 		(<table className="table table-stripped">
 			<caption>Notas de los alumnos</caption>
 			<thead>
@@ -38,5 +39,6 @@ export const AlumnosLista = ({alumnosDb}: IAlumnosListaProps) => {
 
 			</tbody>
 		</table>)}
+		</>
 	)
 }
