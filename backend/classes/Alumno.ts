@@ -12,9 +12,6 @@ export class Alumno {
 		this.notaMates = notaMates;
 		this.notaLengua = notaLengua;
 		this.notaHistoria = notaHistoria;
-		this.notaMedia = 0;
-	}
-	public setMedia(): void {
-this.notaMedia = (this.notaHistoria+this.notaLengua+this.notaMates)/3;		
+		this.notaMedia =(notaHistoria+notaLengua+notaMates)/3;
 	}
 }
