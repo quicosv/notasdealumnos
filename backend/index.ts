@@ -3,7 +3,7 @@ import express, { Express } from 'express';
 import { Server, Socket } from 'socket.io';
 import http from 'http';
 import dotenv from 'dotenv';
-import { BandaLista as ListaAlumnos } from './classes/BandaLista';
+import { ListaAlumnos } from './classes/ListaAlumnos';
 
 dotenv.config();
 
