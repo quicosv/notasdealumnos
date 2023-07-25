@@ -34,7 +34,7 @@ export const AlumnosLista = ({alumnosDb}: IAlumnosListaProps) => {
 <td>{x.notaHistoria}</td>
 <td>{x.notaMedia}</td>
 	</tr>
-	setSuma(suma+x.media);
+	// setSuma(suma+x.media);
 ))}
 
 			</tbody>
