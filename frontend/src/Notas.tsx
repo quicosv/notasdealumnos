@@ -43,7 +43,7 @@ export const Notas = () => {
 		</main>
 		<footer>
 			<div role="status" aria-live="polite">
-				{online ? <p className="text-success">Estás conectado.</p> : <p className="text-dangger">No estás contectado.</p>}
+				{online ? <p className="text-success">Estás conectado.</p> : <p className="text-dangger">No estás conectado.</p>}
 			</div>
 		</footer>
 		</>
