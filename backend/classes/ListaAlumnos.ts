@@ -9,6 +9,7 @@ export class ListaAlumnos {
 	addAlumno(nombre: string, notaMates: number, notaLengua: number, notaHistoria: number): void {
 		if (!this.alumnos.find((x) => x.nombre === nombre)) {
 			const nuevoAlumno = new Alumno(this.alumnos.length + 1, nombre, notaMates, notaLengua, notaHistoria);
+			nuevoAlumno.setMedia();
 			this.alumnos.push(nuevoAlumno);
 		}
 	}
