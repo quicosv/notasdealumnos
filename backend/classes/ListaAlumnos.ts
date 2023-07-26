@@ -20,7 +20,7 @@ export class ListaAlumnos {
 				notaLengua,
 				notaHistoria
 			);
-			nuevoAlumno.getNotaMedia();
+			nuevoAlumno.calcularNotaMedia();
 			this.alumnos.push(nuevoAlumno);
 		}
 	}

@@ -94,7 +94,10 @@ export class Alumno {
 	 * Getter $notaMedia
 	 * @return {number}
 	 */
+	public calcularNotaMedia(): number {
+		this.notaMedia = this.calcularMedia();
+	}
 	public getNotaMedia(): number {
-		return this.calcularMedia();
+		return this.notaMedia;
 	}
 }
