@@ -87,14 +87,14 @@ export class Alumno {
 
 	private calcularMedia(): number {
 		const media =
-			(this.getNotaMates() + this.getNotaLengua() + this.getNotaHistoria());
+			(this.getNotaMates() + this.getNotaLengua() + this.getNotaHistoria())/3;
 		return media;
 	}
 	/**
 	 * Getter $notaMedia
 	 * @return {number}
 	 */
-	public calcularNotaMedia(): number {
+	public calcularNotaMedia() {
 		this.notaMedia = this.calcularMedia();
 	}
 	public getNotaMedia(): number {

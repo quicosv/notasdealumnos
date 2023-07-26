@@ -27,7 +27,6 @@ export const Notas = () => {
 		});
 	},[socket]);
 	const crearAlumno = (nombre: string, notaMates: number, notaLengua: number, notaHistoria: number) => {
-		console.log(notaMates)
 		socket.emit('crear-alumno', {nombre,notaMates,notaLengua,notaHistoria});
 	};
 	return (

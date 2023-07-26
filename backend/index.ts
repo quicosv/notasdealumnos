@@ -28,8 +28,7 @@ io.on('connection', (socket: Socket) => {
 
   // Crear una nueva banda
   socket.on('crear-alumno', ({ nombre, notaMates, notaLengua, notaHistoria }) => {
-    console.log(notaMates, parseFloat(notaMates))
-    listaDeAlumnos.addAlumno(nombre, notaMates, notaLengua, notaHistoria);
+    listaDeAlumnos.addAlumno(nombre, parseFloat(notaMates), parseFloat(notaLengua), parseFloat(notaHistoria));
     io.emit('todos-los-alumnos', listaDeAlumnos.getAlumnos());
   });
 });
