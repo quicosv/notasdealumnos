@@ -28,5 +28,22 @@ export class ListaAlumnos {
 	getAlumnos(): Alumno[] {
 		return this.alumnos;
 	}
-	getPrueba() {}
+		/**
+	 * Ordena los alumnos por su nota media. Si se omite el criterio el orden es ascendente.
+	 * @param {string} criterio
+	 */
+
+	ordenarMedia(criterio: string) {
+		switch (criterio) {
+			case 'ascendente':
+				this.alumnos = this.alumnos.sort((a,b) => a.getNotaMedia()-b.getNotaMedia());
+				break;
+			case 'descendente':
+				this.alumnos = this.alumnos.sort((a,b) => b.getNotaMedia()-a.getNotaMedia());
+				break;
+			default:
+				this.alumnos = this.alumnos.sort((a,b) => a.getNotaMedia()-b.getNotaMedia());
+				break;
+		}
+	}
 }

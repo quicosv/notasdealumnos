@@ -21,18 +21,22 @@ const httpServer = http.createServer(app);
 const io = new Server(httpServer);
 
 io.on('connection', (socket: Socket) => {
-  console.log(socket.id);
-  console.log('Cliente conectado');
-  // Emitir al cliente conectado todas las bandas actuales
-  socket.emit('todos-los-alumnos', listaDeAlumnos.getAlumnos());
+	console.log(socket.id);
+	console.log('Cliente conectado');
+	// Emitir al cliente conectado todas las bandas actuales
+	socket.emit('todos-los-alumnos', listaDeAlumnos.getAlumnos());
 
-  // Crear una nueva banda
-  socket.on('crear-alumno', ({ nombre, notaMates, notaLengua, notaHistoria }) => {
-    listaDeAlumnos.addAlumno(nombre, parseFloat(notaMates), parseFloat(notaLengua), parseFloat(notaHistoria));
-    io.emit('todos-los-alumnos', listaDeAlumnos.getAlumnos());
-  });
+	// Crear una nueva banda
+	socket.on('crear-alumno', ({ nombre, notaMates, notaLengua, notaHistoria }) => {
+		listaDeAlumnos.addAlumno(nombre, parseFloat(notaMates), parseFloat(notaLengua), parseFloat(notaHistoria));
+		io.emit('todos-los-alumnos', listaDeAlumnos.getAlumnos());
+	});
+	socket.on('ordenar-alumnos',({criterio}) => {
+		listaDeAlumnos.ordenarMedia(criterio);
+		io.emit('todos-los-alumnos', listaDeAlumnos.getAlumnos());
+	})
 });
 
 httpServer.listen(process.env.PORT, () => {
-  console.log('Servidor en ejecución en puerto ' + process.env.PORT);
+	console.log('Servidor en ejecución en puerto ' + process.env.PORT);
 });
