@@ -38,7 +38,7 @@ export const Notas = () => {
 		<AlumnosForm crearAlumno={crearAlumno} />
 	</div>
 	<div className="col-8"></div>
-	<AlumnosLista alumnosDb={alumnos} />
+	<AlumnosLista alumnosDb={alumnos} Socket={socket} />
 </div>
 		</main>
 		<footer>
