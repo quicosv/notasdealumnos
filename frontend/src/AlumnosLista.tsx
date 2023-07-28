@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { IAlumno } from "./interfaces/alumno.interface";
+import { Socket } from "socket.io-client";
 
 interface IAlumnosListaProps {
 	alumnosDb: IAlumno[];
+	socket: Socket;
 }
 
-export const AlumnosLista = ({alumnosDb}: IAlumnosListaProps) => {
+export const AlumnosLista = ({alumnosDb, socket}: IAlumnosListaProps) => {
 	const [alumnos, setAlumnos] = useState<IAlumno[]>(alumnosDb);
 	// const [suma, setSuma] = useState<number>(0);
 	useEffect(() => {
@@ -22,7 +24,12 @@ export const AlumnosLista = ({alumnosDb}: IAlumnosListaProps) => {
 					<th scope="col">Matemáticas</th>
 					<th scope="col">Lengua</th>
 					<th scope="col">Historia</th>
-					<th scope="col">Media</th>
+					<th scope="col"><details>
+						<summary>Media</summary>
+						<button onClick={() => socket.emit('ordenar-alumnos','ascendente')}>Orden ascendente</button>
+						<button onClick={() => socket.emit('ordenar-alumnos','descendente')}>Orden descendente</button>
+					</details>
+						</th>
 				</tr>
 			</thead>
 			<tbody>
