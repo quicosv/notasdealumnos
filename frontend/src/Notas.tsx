@@ -29,6 +29,9 @@ export const Notas = () => {
 	const crearAlumno = (nombre: string, notaMates: number, notaLengua: number, notaHistoria: number) => {
 		socket.emit('crear-alumno', {nombre,notaMates,notaLengua,notaHistoria});
 	};
+	const ordenar = (criterio: string) => {
+		socket.emit('ordenar-alumnos',criterio);
+	}
 	return (
 		<>
 		<main className="container">
@@ -38,7 +41,7 @@ export const Notas = () => {
 		<AlumnosForm crearAlumno={crearAlumno} />
 	</div>
 	<div className="col-8"></div>
-	<AlumnosLista alumnosDb={alumnos} Socket={socket} />
+	<AlumnosLista alumnosDb={alumnos} socket={socket} />
 </div>
 		</main>
 		<footer>
