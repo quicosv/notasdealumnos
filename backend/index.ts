@@ -33,6 +33,8 @@ io.on('connection', (socket: Socket) => {
 	});
 	socket.on('ordenar-alumnos',({criterio}) => {
 		listaDeAlumnos.ordenarMedia(criterio);
+		console.log('Así están los alumnos ahora: ');
+		console.log(listaDeAlumnos.getAlumnos());
 		io.emit('todos-los-alumnos', listaDeAlumnos.getAlumnos());
 	})
 });
