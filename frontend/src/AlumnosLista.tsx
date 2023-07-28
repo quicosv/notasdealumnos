@@ -13,6 +13,11 @@ export const AlumnosLista = ({ alumnosDb, socket }: IAlumnosListaProps) => {
 	useEffect(() => {
 		setAlumnos(alumnosDb);
 	}, [alumnosDb]);
+
+	const emitirOrdenar =(criterio: string)=>{
+		socket.emit('ordenar-alumnos', criterio);
+	}
+
 	return (
 		<>
 			{alumnos.length === 0 ? (<p>No hay alumnos.</p>) :
@@ -27,8 +32,8 @@ export const AlumnosLista = ({ alumnosDb, socket }: IAlumnosListaProps) => {
 							<th scope="col"><details>
 								<summary>Media</summary>
 								<ul className="sinvinietas">
-									<li><button onClick={() => socket.emit('ordenar-alumnos', 'ascendente')}>Orden ascendente</button></li>
-									<li><button onClick={() => socket.emit('ordenar-alumnos', 'descendente')}>Orden descendente</button></li></ul>
+									<li><button onClick={() => emitirOrdenar('ascendente')}>Orden ascendente</button></li>
+									<li><button onClick={() =>emitirOrdenar('descendente')}>Orden descendente</button></li></ul>
 							</details>
 							</th>
 						</tr>
